@@ -102,5 +102,80 @@ Use the `url()` and `route()` helpers to generate URLs.
 
 ## 30. Explain the concept of contracts in Laravel.
 Contracts are interface definitions for core Laravel services, ensuring consistent usage and dependency injection.
-"""
+
+
+# Laravel Interview Questions and Answers - More
+
+### 1. Talk me through the steps of defining a route in Laravel.
+Define a route in Laravel by specifying it in the `routes/web.php` (for web routes) or `routes/api.php` (for API routes) file. Use `Route::get`, `Route::post`, etc., followed by a URL pattern and a closure or controller action.
+
+### 2. Explain what named routes are.
+Named routes allow you to reference routes by name instead of URL, enabling flexibility if the URL changes. Define them by chaining `->name('route.name')` to a route definition.
+
+### 3. List some default packages of Laravel 5.6.
+Default packages include Eloquent ORM, Blade templating engine, Passport for API authentication, and Horizon for queue management.
+
+### 4. Explain dependency injection and its types.
+Dependency injection is a technique where dependencies are injected into classes, enhancing modularity. Laravel supports constructor and method injection.
+
+### 5. Which class can you use to handle exceptions?
+Use the `App\Exceptions\Handler` class to handle exceptions globally in Laravel.
+
+### 6. What is the use of the `dd()` function?
+The `dd()` (Dump and Die) function is used for debugging, as it dumps variable information and halts execution.
+
+### 7. How can you make a sitemap.xml file in Laravel?
+Create a sitemap using packages like `spatie/laravel-sitemap` or generate it manually by defining a route that outputs XML.
+
+### 8. What is the difference between `insert()` and `insertGetId()` in Laravel?
+`insert()` inserts data without returning an ID, while `insertGetId()` inserts and returns the auto-increment ID.
+
+### 9. Define the Active Record pattern.
+The Active Record pattern is an architectural pattern where objects directly represent rows in a database table, each with CRUD capabilities.
+
+### 10. What is the MVC framework?
+MVC (Model-View-Controller) is a pattern that separates the application into models (data), views (UI), and controllers (logic).
+
+### 11. How do you create a route for resources?
+Define a resource route using `Route::resource('resource', ControllerName::class)`, which provides CRUD route definitions automatically.
+
+### 12. Explain the fluent query builder in Laravel.
+The Fluent Query Builder in Laravel provides an expressive syntax for SQL queries, using methods like `where()`, `orderBy()`, and `join()`.
+
+### 13. What are accessors and mutators?
+Accessors format attribute values when accessed, while mutators format them before they’re saved in the database.
+
+### 14. How do you identify a Blade template file?
+Blade template files end with a `.blade.php` extension.
+
+### 15. What are the differences between Laravel and CodeIgniter frameworks?
+Laravel supports ORM (Eloquent), has built-in Blade templating, Artisan CLI, and dependency injection, unlike CodeIgniter.
+
+### 16. What is seeding?
+Seeding allows you to insert sample data into the database using seed classes and the `php artisan db:seed` command.
+
+### 17. Name a few common Artisan commands in Laravel.
+Common Artisan commands include `php artisan migrate`, `php artisan serve`, and `php artisan make:model`.
+
+### 18. Define soft delete.
+Soft delete keeps records in the database with a timestamp in the `deleted_at` column instead of removing them.
+
+### 19. What command can you use to check whether you have installed Composer on your computer?
+Run `composer --version` in the terminal to check Composer installation.
+
+### 20. Talk me through the steps of creating middleware.
+Use `php artisan make:middleware MiddlewareName` to create middleware, define its logic, and register it in `app/Http/Kernel.php`.
+
+### 21. What is throttling? How do you implement it in Laravel?
+Throttling limits request rates to prevent abuse. Use the `throttle` middleware in route definitions.
+
+### 22. What is open-source software?
+Open-source software is publicly accessible software that anyone can modify or distribute.
+
+### 23. What is the default session timeout duration?
+The default session timeout in Laravel is 120 minutes, configurable in `config/session.php`.
+
+### 24. Define an observer in Laravel.
+Observers in Laravel listen to Eloquent model events like `created`, `updated`, etc., allowing actions based on these events.
+
 
