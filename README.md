@@ -179,3 +179,180 @@ The default session timeout in Laravel is 120 minutes, configurable in `config/s
 Observers in Laravel listen to Eloquent model events like `created`, `updated`, etc., allowing actions based on these events.
 
 
+
+
+# Advanced Laravel Interview Questions
+
+### 1. Define Relationships in Laravel
+In Laravel, relationships allow Eloquent models to interact with each other. The common relationships include:
+- **One-to-One:** `hasOne()` and `belongsTo()`
+- **One-to-Many:** `hasMany()` and `belongsTo()`
+- **Many-to-Many:** `belongsToMany()`
+- **Has-Many-Through**
+
+**Example:** One-to-Many relationship between `Post` and `Comment` models:
+```php
+class Post extends Model {
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+}
+```
+
+### 2. Explain What Facades Are and How You Can Register Them
+Facades in Laravel provide a static interface to classes available in the application’s service container. They allow methods to be accessed statically without instantiating objects. Custom facades can be created by binding classes in the `app.php` file.
+
+**Example:** Accessing the `Cache` facade statically.
+```php
+use Illuminate\Support\Facades\Cache;
+Cache::put('key', 'value', 10);
+```
+
+### 3. How Do You Perform Request Validation?
+Request validation in Laravel can be done using the `validate` method on the request or by creating a custom `FormRequest`.
+
+**Example:**
+```php
+$request->validate([
+    'title' => 'required|max:255',
+    'body' => 'required',
+]);
+```
+
+### 4. What is a Service Container?
+The Laravel service container is a powerful tool for managing class dependencies and performing dependency injection. The container can resolve dependencies for registered services automatically.
+
+**Example: Registering a binding:**
+```php
+app()->bind('App\Services\PaymentService', function ($app) {
+    return new PaymentService();
+});
+```
+
+### 5. Differences Between the `register` and `boot` Methods
+- **register:** This method is used to bind things into the service container; it’s called when the service provider is registered.
+- **boot:** This method is called after all service providers are registered, allowing you to execute actions after registration.
+
+### 6. What are Queues in Laravel?
+Queues allow tasks to be deferred until a later time, which speeds up web requests and improves performance.
+
+**Example: Dispatching a job to a queue:**
+```php
+dispatch(new ProcessOrder($order));
+```
+
+### 7. Explain Encryption and Decryption in Laravel
+Laravel's `Crypt` facade provides encryption and decryption using AES-256-CBC encryption.
+
+**Example:**
+```php
+use Illuminate\Support\Facades\Crypt;
+$encrypted = Crypt::encrypt('secret');
+$decrypted = Crypt::decrypt($encrypted);
+```
+
+### 8. What is CSRF?
+CSRF (Cross-Site Request Forgery) protects web applications by ensuring that requests come from authenticated users.
+
+**Example:** Laravel automatically provides CSRF protection for all routes in `web.php` using a hidden token.
+
+### 9. Explain Eloquent and How It Helps Interact with Databases
+Eloquent ORM provides an active record implementation to work with databases. It makes database interactions intuitive and simplifies queries.
+
+**Example:**
+```php
+$user = User::find(1);
+```
+
+### 10. Syntax to Set a Value in a Session
+```php
+session(['key' => 'value']);
+```
+
+### 11. How to Mock a Static Facade Method
+Use the `shouldReceive` method with facades.
+
+**Example:**
+```php
+Mail::shouldReceive('send')->once();
+```
+
+### 12. Define the `web.php` Route
+The `web.php` file contains routes with the `web` middleware, typically for the main web application.
+
+### 13. How Logging Works in Laravel
+Laravel uses the `Log` facade for logging. By default, it’s configured to store logs in `storage/logs/laravel.log`.
+
+### 14. How to Generate a Request
+Generate a request using the `php artisan make:request` command.
+
+**Example:**
+```bash
+php artisan make:request StoreBlogPost
+```
+
+### 15. What are Macro Functions?
+Macros allow you to add custom methods to classes. This can be useful for extending classes like collections.
+
+**Example:**
+```php
+use Illuminate\Support\Collection;
+Collection::macro('toUpper', function () {
+    return $this->map(function ($value) {
+        return strtoupper($value);
+    });
+});
+```
+
+### 16. Custom Validations
+Custom validation rules can be created using the `php artisan make:rule` command.
+
+### 17. Competitors of Laravel
+Some competitors include Symfony, CodeIgniter, and Zend.
+
+### 18. System Requirements for Laravel
+- PHP >= 7.3
+- BCMath, Ctype, Fileinfo, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML
+
+### 19. What Template Engine Does Laravel Use?
+Blade is the templating engine in Laravel.
+
+### 20. Yield in Laravel
+`@yield` is used to define a section in layouts, allowing content to be injected from child views.
+
+### 21. Turning Off CSRF Protection for a Specific Route
+Add the route URI to the `$except` array in the `VerifyCsrfToken` middleware.
+
+### 22. What are Laravel Guards?
+Guards define how users are authenticated, allowing for multiple authentication drivers.
+
+### 23. How to Update Laravel
+To update Laravel, run:
+```bash
+composer update
+```
+
+### 24. Checking if a Table Exists
+```php
+if (Schema::hasTable('users')) {
+    // Table exists
+}
+```
+
+### 25. What is the Faker Library?
+The Faker library is used to generate fake data for seeding the database.
+
+### 26. Difference Between `{{ $username }}` and `{!! $username !!}`
+- `{{ }}`: Escapes HTML tags.
+- `{!! !!}`: Renders HTML without escaping.
+
+### 27. Benefit of Eager Loading
+Eager loading reduces the number of queries by loading related data in advance.
+
+### 28. Removing a Compiled Class File
+```bash
+php artisan clear-compiled
+```
+
+
+
